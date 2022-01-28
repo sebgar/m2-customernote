@@ -1,0 +1,53 @@
+<?php
+/* @var $block \Magento\Framework\View\Element\Template */
+/* @var $viewModel \Sga\CustomerNote\ViewModel\CartCustomerNote */
+$viewModel = $block->getData('customer_note_view_model');
+$oldComment = $viewModel ? $viewModel->getComment() : '';
+$hasComment = !!$oldComment;
+$extraValidationClasses = $viewModel ? $viewModel->getExtraClass() : '';
+
+$config = [
+    'elements' => [
+        'input_text' => '#customer_note',
+        'result' => '#customer_note_length'
+    ]
+];
+?>
+<div class="cart-customer-note">
+    <div class="block cart-customer-note" id="block-cart-customer-note">
+        <div class="content" data-role="content" aria-labelledby="block-cart-customer-note-heading">
+            <form id="cart-customer-note-form"
+                  action="<?= $block->escapeUrl($block->getUrl('customernote/cart/update')) ?>"
+                  data-mage-init='{"validation": {}}'
+                  method="post">
+                <div class="fieldset cart-customer-note <?= $hasComment ? 'applied' : '' ?>">
+                    <input type="hidden" name="remove" id="remove-customer-note" value="0" />
+                    <div class="field">
+                        <div class="control">
+                            <label for="customer_note" class="label"><span><?= $block->escapeHtml(__('Do you have any comments regarding the order?')) ?></span></label>
+                            <textarea class="input-text customer-note customer-note-input <?= $extraValidationClasses ? $extraValidationClasses : ''?>"
+                                      id="customer_note"
+                                      name="customer_note"
+                                      rows="4"
+                                      placeholder="<?= $block->escapeHtml(__('Enter your comment...')) ?>"
+                            ><?= $oldComment ?></textarea>
+                            <?php if ($viewModel->hasMaxLength()): ?>
+                                <p><span><?= __('Remaining characters:') ?></span> <span id="customer_note_length" data-length="<?= $viewModel->getMaxLength() ?>"></span></p>
+                                <script type="text/x-magento-init">
+                                {"#customer_note_length": {"customerNoteLength": <?= json_encode($config) ?>}}
+                                </script>
+                            <?php endif ?>
+                        </div>
+                    </div>
+                    <div class="actions-toolbar">
+                        <div class="primary">
+                            <button class="action apply-customer-note primary" type="submit" value="<?= $block->escapeHtmlAttr(__('Save Comment')) ?>">
+                                <span><?= $block->escapeHtml(__('Save Comment')) ?></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<?php
+/* @var $block \Magento\Sales\Block\Adminhtml\Order\View\Tab\Info */
+/* @var $escaper \Magento\Framework\Escaper */
+$order = $block->getOrder();
+?>
+<section class="admin__page-section order-addresses">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $escaper->escapeHtml(__('Customer Note')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <?= nl2br($escaper->escapeHtml($order->getCustomerNote())) ?>
+    </div>
+</section>

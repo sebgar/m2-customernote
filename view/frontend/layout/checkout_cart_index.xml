@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="checkout.cart.items">
+            <block name="checkout.cart.customer-note" after="checkout.cart.container" template="Sga_CustomerNote::cart/customer_note.phtml" ifconfig="sales/customer_note/show_in_cart">
+                <arguments>
+                    <argument name="customer_note_view_model" xsi:type="object">Sga\CustomerNote\ViewModel\CartCustomerNote</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

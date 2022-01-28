@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/guest-carts/:cartId/set-order-customer-note" method="PUT">
+        <service class="Sga\CustomerNote\Api\GuestOrderCustomerNoteManagementInterface" method="saveOrderCustomerNote"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/carts/mine/set-order-customer-note" method="PUT">
+        <service class="Sga\CustomerNote\Api\OrderCustomerNoteManagementInterface" method="saveOrderCustomerNote"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+</routes>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Sga\CustomerNote\Api\Data\OrderCustomerNoteInterface" type="Sga\CustomerNote\Model\Data\OrderCustomerNote" />
+    <preference for="Sga\CustomerNote\Api\OrderCustomerNoteManagementInterface" type="Sga\CustomerNote\Model\OrderCustomerNoteManagement" />
+    <preference for="Sga\CustomerNote\Api\GuestOrderCustomerNoteManagementInterface" type="Sga\CustomerNote\Model\GuestOrderCustomerNoteManagement" />
+</config>
