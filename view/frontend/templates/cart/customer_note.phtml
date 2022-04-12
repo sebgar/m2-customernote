@@ -14,13 +14,13 @@ $config = [
 ];
 ?>
 <div class="cart-customer-note">
-    <div class="block cart-customer-note" id="block-cart-customer-note">
+    <div class="block" id="block-cart-customer-note">
         <div class="content" data-role="content" aria-labelledby="block-cart-customer-note-heading">
             <form id="cart-customer-note-form"
                   action="<?= $block->escapeUrl($block->getUrl('customernote/cart/update')) ?>"
                   data-mage-init='{"validation": {}}'
                   method="post">
-                <div class="fieldset cart-customer-note <?= $hasComment ? 'applied' : '' ?>">
+                <div class="fieldset <?= $hasComment ? 'applied' : '' ?>">
                     <input type="hidden" name="remove" id="remove-customer-note" value="0" />
                     <div class="field">
                         <div class="control">
@@ -40,11 +40,9 @@ $config = [
                         </div>
                     </div>
                     <div class="actions-toolbar">
-                        <div class="primary">
-                            <button class="action apply-customer-note primary" type="submit" value="<?= $block->escapeHtmlAttr(__('Save Comment')) ?>">
-                                <span><?= $block->escapeHtml(__('Save Comment')) ?></span>
-                            </button>
-                        </div>
+                        <button class="action apply-customer-note primary" type="submit" value="<?= $block->escapeHtmlAttr(__('Save Comment')) ?>">
+                            <span><?= $block->escapeHtml(__('Save Comment')) ?></span>
+                        </button>
                     </div>
                 </div>
             </form>
